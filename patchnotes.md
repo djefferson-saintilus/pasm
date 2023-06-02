@@ -5,7 +5,7 @@ don't show password field, ever gonna show it, show the encrypted
 version for password
 
 
-- ###\
+- ###\ v1.1
 	1. Create KeePass database (Error)
 		if the database path exists, the program will always delete or replace with the new database path.
 
@@ -18,6 +18,13 @@ version for password
 		(Fix)
 		- entry name, username, password and website URL can not empty 
 		- password length >= 8
+	3.
+
+	4.
+
+	5.
+
+
 
 
 
