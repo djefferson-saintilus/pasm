@@ -1,4 +1,4 @@
-# PASM: a Password Manager Security Analyzer! 🔒💻
+# PASM: Password Manager Security Analyzer! 🔒💻
 <p align="center">
   <img src="banner.png" alt="Image" />
 </p>
@@ -18,6 +18,8 @@ Key features of the Password Manager Security Analyzer include:
 
 - 📋 Password Sharing: Easily share passwords with others without revealing the actual password.
 
+# How-to-use
+
 To use the Password Manager Security Analyzer, simply create a new KeePass database or use an existing one. You can 
 store your passwords, retrieve them based on entry names or website URLs, analyze password security, and view all your 
 stored entries in a convenient table format.
@@ -26,3 +28,5 @@ The project is open-source and available on GitHub, so you can explore the code,
 to suit your needs.
 
 Give it a try and take control of your passwords with confidence! Let's prioritize online security together. 💪🔒💻
+
+# How-to-install
