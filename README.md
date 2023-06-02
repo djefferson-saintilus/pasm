@@ -1,18 +1,19 @@
-# passManagerSec
+# PASM: a Password Manager Security Analyzer! 🔒💻
+[image](banner.png)
 
-Introducing my latest project (3/50): a Password Manager Security Analyzer! 🔒💻
 
 In an increasingly digital world, keeping our online accounts secure is of paramount importance. That's why 
 I've developed a Python-based Password Manager Security Analyzer to help you manage and safeguard your passwords effectively.
 
 Key features of the Password Manager Security Analyzer include:
-🔐 Secure Password Storage: Safely store and manage your passwords in an encrypted KeePass database.
 
-🌐 Website Integration: Associate website URLs with your stored passwords for easy retrieval.
+- 🔐 Secure Password Storage: Safely store and manage your passwords in an encrypted KeePass database.
 
-🔍 Password Analysis: Check if your passwords have been compromised in data breaches using the Have I Been Pwned API.
+- 🌐 Website Integration: Associate website URLs with your stored passwords for easy retrieval.
 
-📋 Password Sharing: Easily share passwords with others without revealing the actual password.
+- 🔍 Password Analysis: Check if your passwords have been compromised in data breaches using the Have I Been Pwned API.
+
+- 📋 Password Sharing: Easily share passwords with others without revealing the actual password.
 
 To use the Password Manager Security Analyzer, simply create a new KeePass database or use an existing one. You can 
 store your passwords, retrieve them based on entry names or website URLs, analyze password security, and view all your 
