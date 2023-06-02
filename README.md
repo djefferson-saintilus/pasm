@@ -1,5 +1,5 @@
 # PASM: a Password Manager Security Analyzer! 🔒💻
-[image](banner.png)
+[image](./banner.png)
 
 
 In an increasingly digital world, keeping our online accounts secure is of paramount importance. That's why 
