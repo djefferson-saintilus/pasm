@@ -1,8 +1,10 @@
 # PASM: Password Manager Security Analyzer! 🔒💻
+- author : Djefferson Saintilus
+- Collaborators : xdevcod3, kerdes
+
 <p align="center">
   <img src="banner.png" alt="Image" />
 </p>
-
 
 
 In an increasingly digital world, keeping our online accounts secure is of paramount importance. That's why 
@@ -29,4 +31,3 @@ to suit your needs.
 
 Give it a try and take control of your passwords with confidence! Let's prioritize online security together. 💪🔒💻
 
-# How-to-install
