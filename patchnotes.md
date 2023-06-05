@@ -1,30 +1,26 @@
-v1.0
-- add generate password in store_password option
-- encrypted password when enter in db and show entries options
-don't show password field, ever gonna show it, show the encrypted
-version for password
-
-
-- ###\ v1.1
+- ###\ v1.0
 	1. Create KeePass database (Error)
 		if the database path exists, the program will always delete or replace with the new database path.
 
-		(Fix)
 		(check if the file already exists and tell the user that there is already a db with this name)
+FIXED
 
 	2. Store password (Error)
 		You can create a store password with empty require input
 
-		(Fix)
-		- entry name, username, password and website URL can not empty 
-		- password length >= 8
-	3.
+		- password length >= 8 minimum, db and store_password (FIXED)
+		- please fill all the blanks to store password (FIXED)
+		- add generate password in store_password option (FIXED)
 
-	4.
-
-	5.
+	3. clear output after using an option (OPTIONAL)
 
 
+	4. (ADDED) only use the name to look for a db, now you can look without the dir and extension
 
+	5. DELETE password option
+
+	6. clear screen (ADDED)
+
+	7. more user-friendly
 
 
