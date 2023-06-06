@@ -272,8 +272,9 @@ def main():
                                                                         
 """)
 
-    print("Author: Djefferson Saintilus")
-    print("version: v1.0")
+    print("Author	: Djefferson Saintilus")
+    print("Version	: v1.0")
+    print("Collaborators : kerdes, xdevcod3")
     print("--------------------------------")
     while True:
         print("\nMenu:")
