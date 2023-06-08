@@ -21,6 +21,9 @@ FIXED
 
 	6. clear screen (ADDED)
 
-	7. more user-friendly
+	7. more user-friendly (ADDED)
+
+BIG UPDATE v1.1
+by collaborators : kerdes
 
 
