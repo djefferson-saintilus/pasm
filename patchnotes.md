@@ -12,18 +12,17 @@ FIXED
 		- please fill all the blanks to store password (FIXED)
 		- add generate password in store_password option (FIXED)
 
-	3. clear output after using an option (OPTIONAL)
+	3. clear output after using an option ~~(OPTIONAL)~~
 
 
 	4. (ADDED) only use the name to look for a db, now you can look without the dir and extension
 
-	5. DELETE password option
+	5. (ADDED) DELETE password option
 
-	6. clear screen (ADDED)
+	6. (ADDED) clear screen 
 
-	7. more user-friendly (ADDED)
-
-BIG UPDATE v1.1
-by collaborators : kerdes
+	7. set command line more user-friendly for beginners
+	
+	8. (ADDED) If not exist (db) directory automatic creation set
 
 
