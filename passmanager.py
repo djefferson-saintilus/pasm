@@ -11,7 +11,11 @@ import os, sys, time
 DB_FILE = ""
 MASTER_PASSWORD = ""
 
-
+# Create the database directory if not exist
+db_dir = r"./db/"
+if not os.path.exists(db_dir):
+    os.mkdir(r"./db/")
+    
 def clear_screen():
     """Clears the console screen based on the current platform."""
     if platform.system() == "Windows":
@@ -57,7 +61,7 @@ def create_database():
         print(
             f"\033[1;31mA database with the name 'db/{database_name}.kdbx' already exists in {os.path.basename(current_directory)}.\033[0m"
         )
-        input("Press ENTER to continue")
+        input("\nPress ENTER to continue")
         return
     
     master_password = getpass.getpass(
@@ -67,14 +71,14 @@ def create_database():
 
     if master_password != confirm_password:
         print("\033[1;31mPasswords do not match. Database creation aborted.\033[0m")
-        input("Press ENTER to continue")
+        input("\nPress ENTER to continue")
         return
 
     if len(master_password) < 8:
         print(
             "\033[1;31mMaster password should be a minimum of 8 characters long. Database creation aborted.\033[0m"
         )
-        input("Press ENTER to continue")
+        input("\nPress ENTER to continue")
         return
 
     try:
@@ -89,10 +93,10 @@ def create_database():
             settings_file.write(f"{DB_FILE}\n{master_password}")
 
         MASTER_PASSWORD = master_password
-        input()
+        time.sleep(2)
     except Exception as e:
         print("\033[1;31mError creating database:", str(e), "\033[0m")
-        input("Press ENTER to continue")
+        input("\nPress ENTER to continue")
         
 
 def use_existing_db():
@@ -109,7 +113,7 @@ def use_existing_db():
 
     if not os.path.exists(db_path):
         print("\033[1;31mDatabase file does not exist.\033[0m")
-        input("Press ENTER to continue")
+        input("\nPress ENTER to continue")
         return
 
     try:
@@ -120,10 +124,10 @@ def use_existing_db():
         print("\033[1;32mUsing existing database:\033[0m")
         print("\033[1;32mDatabase Path:\033[0m", DB_FILE)
         print("\033[1;32mMaster Password:\033[0m", "*" * len(MASTER_PASSWORD))
-        time.sleep(4)
+        input("\nPress ENTER to continue")
     except Exception as e:
         print("\033[1;31mError opening existing database:", str(e), "\033[0m")
-        input("Press ENTER to continue")
+        input("\nPress ENTER to continue")
 
 
 def store_password():
@@ -134,7 +138,7 @@ def store_password():
         print(
             "\033[1;31mPlease create a new database or use an existing database first.\033[0m"
         )
-        input("Press ENTER to continue")
+        input("\nPress ENTER to continue")
         return
 
     while True:
@@ -154,7 +158,7 @@ def store_password():
                 print(
                     "\033[1;31mPassword length should be a minimum of 8 characters.\033[0m"
                 )
-                input("Press ENTER to continue")
+                input("\nPress ENTER to continue")
             password = generate_password(password_length)
             break
 
@@ -167,21 +171,21 @@ def store_password():
                 print(
                     "\033[1;31mPassword should be a minimum of 8 characters long.\033[0m"
                 )
-                input("Press ENTER to continue")
+                input("\nPress ENTER to continue")
             else:
                 break
 
         else:
             print("\033[1;31mInvalid option. Please enter 'y' or 'n'.\033[0m")
-            input("Press ENTER to continue")
+            input("\nPress ENTER to continue")
 
     while True:
-        entry_name = input("\033[1;36mEnter the entry name:\033[0m ")
+        entry_name = input("\033[1;36mEnter the entry name (Title):\033[0m ")
         website_url = input("\033[1;36mEnter the website URL:\033[0m ")
 
         if not validators.url(website_url):
             print("\033[1;31mInvalid website URL.\033[0m")
-            input("Press ENTER to continue")
+            input("\nPress ENTER to continue")
         else:
             break
 
@@ -190,7 +194,7 @@ def store_password():
 
         if len(username) < 4:
             print("\033[1;31mUsername should be a minimum of 4 characters long.\033[0m")
-            input("Press ENTER to continue")
+            input("\nPress ENTER to continue")
         else:
             break
 
@@ -203,7 +207,7 @@ def store_password():
                 print(
                     "\033[1;31mAn entry with the same name already exists. Password not stored.\033[0m"
                 )
-                input("Press ENTER to continue")
+                input("\nPress ENTER to continue")
                 return
 
             entry = kp.add_entry(
@@ -212,10 +216,10 @@ def store_password():
             entry.url = website_url  # Set the URL field
             kp.save()
         print("\033[1;32mPassword stored successfully!\033[0m")
-        input("Press ENTER to continue")
+        input("\nPress ENTER to continue")
     except Exception as e:
         print("\033[1;31mError storing password:", str(e), "\033[0m")
-        input("Press ENTER to continue")
+        input("\nPress ENTER to continue")
 
 
 def retrieve_password():
@@ -226,7 +230,7 @@ def retrieve_password():
         print(
             "\033[1;31mPlease create a new database or use an existing database first.\033[0m"
         )
-        input("Press ENTER to continue")
+        input("\nPress ENTER to continue")
         return
 
     entry_name = input("\033[1;36mEnter the entry name:\033[0m ")
@@ -246,11 +250,43 @@ def retrieve_password():
                 time.sleep(2)
             else:
                 print("\033[1;31mNo matching entry found.\033[0m")
-                input("Press ENTER to continue")
+                input("\nPress ENTER to continue")
     except Exception as e:
         print("\033[1;31mError retrieving password:", str(e), "\033[0m")
-        input("Press ENTER to continue")
+        input("\nPress ENTER to continue")
 
+# Delete entry based on the entry name
+def delete_entry_by_title():
+    global DB_FILE
+    global MASTER_PASSWORD
+    while True:
+        entry_title = input("\033[1;36mEnter the entry name to delete: \033[0m")
+        try:
+            kp = pykeepass.PyKeePass(DB_FILE, password=MASTER_PASSWORD)
+            # # Find entries maching the title 
+            entry = kp.find_entries(title=entry_title, first=True)
+
+            if entry:
+                user_confirmation = input("\033[1;31mDo you want to delete the entry ? (y/n):\033[0m ")
+                if user_confirmation == "y":
+                    kp.delete_entry(entry)
+                    kp.save()
+                    print("\033[1;32mEntry Deleted successfully!\033[0m")
+                elif user_confirmation == "n":
+                    print("\033[1;31mNo entry delete in the database\033[0m")
+                    input("\nPress ENTER to continue")
+                    break
+                else:
+                    print("\033[1;31mBad answer character. Type (y or n)\033[0m")
+                    continue
+                input("\nPress ENTER to continue")
+                return
+            else:
+                print("\033[1;31mNo matching entry found.\033[0m")
+                input("\nPress ENTER to continue")
+                return  
+        except Exception as e:
+            print(str(e))
 
 def analyze_password():
     while True:
@@ -258,7 +294,7 @@ def analyze_password():
 
         if password.strip() == "":
             print("\033[1;31mPassword cannot be empty. Please try again.\033[0m")
-            input("Press ENTER to continue")
+            input("\nPress ENTER to continue")
         else:
             break
 
@@ -280,7 +316,7 @@ def analyze_password():
                     print(
                         f"The password '\033[1;33m{password}\033[0m' has been found in \033[1;31m{count}\033[0m data breaches."
                     )
-                    input("Press ENTER to continue")
+                    input("\nPress ENTER to continue")
                     found = True
                     break
 
@@ -292,7 +328,7 @@ def analyze_password():
                 print(
                     "However, it is important to use strong and unique passwords for better security.\033[0m"
                 )
-                input("Press ENTER to continue")
+                input("\nPress ENTER to continue")
             else:
                 print(
                     "\033[1;31mTip: This password has been compromised in a data breach."
@@ -300,7 +336,7 @@ def analyze_password():
                 print(
                     "It is strongly recommended to choose a different and more secure password.\033[0m"
                 )
-                input("Press ENTER to continue")
+                input("\nPress ENTER to continue")
         elif response.status_code == 404:
             print(
                 f"The password '\033[1;33m{password}\033[0m' has not been found in any data breaches."
@@ -309,13 +345,13 @@ def analyze_password():
             print(
                 "However, it is important to use strong and unique passwords for better security.\033[0m"
             )
-            input("Press ENTER to continue")
+            input("\nPress ENTER to continue")
         else:
             print("An error occurred while analyzing the password.")
             time.sleep(5)
     except Exception as e:
         print("Error analyzing password:", str(e))
-        input("Press ENTER to continue")
+        input("\nPress ENTER to continue")
 
 
 def show_entries():
@@ -324,7 +360,7 @@ def show_entries():
 
     if DB_FILE == "" or MASTER_PASSWORD == "":
         print("\033[1;33mPlease create a new database or use an existing database first.\033[0m")
-        input("Press ENTER to continue")
+        input("\nPress ENTER to continue")
         return
     try:
         with pykeepass.PyKeePass(DB_FILE, password=MASTER_PASSWORD) as kp:
@@ -336,10 +372,10 @@ def show_entries():
 
             headers = ["Title", "Username", "URL"]
             print(tabulate(table_data, headers, tablefmt="grid"))
-            input("Press ENTER to continue")
+            input("\nPress ENTER to continue")
     except Exception as e:
         print("Error retrieving entries:", str(e))
-        input("Press ENTER to continue")
+        input("\nPress ENTER to continue")
 
 # this is an update to delete Menu
 # Update made by kerdes
@@ -351,8 +387,9 @@ menu = [
     "    2. Use existing KeePass database",
     "    3. Store password",
     "    4. Retrieve password",
-    "    5. Analyze password",
-    "    6. Show database entries",
+    "    5. Delete database entry",
+    "    6. Analyze password",
+    "    7. Show database entries",
     "    0. Exit"
 ]
 
@@ -366,19 +403,21 @@ def print_menu():
     print(menu[4])
     print(menu[5])
     print(menu[6])
+    print(menu[7])
     print()
         
 # Top level function to get user choice when program start
 def get_user_choice():
     while True:
-        choice = input("Enter your choice: ")
+        choice = input("\nEnter your choice: ")
         if choice == "*":
             clear_screen()
             logo()
             print_menu()
             menu_actions()
         elif choice == "q":
-            print("*** Thanks you for using \033[1;36mPASM\033[0m as your Password Manager ***")
+            print("*** Thank you for using \033[1;36mPASM\033[0m as your Password Manager ***")
+            print("Bye")
             sys.exit()
         else:
             print("\033[1;31mInvalid choice. Please try again.\033[0m")
@@ -404,7 +443,7 @@ def logo():
 def banner2():
     print("--------------------------------")
     print("Author	: Djefferson Saintilus")
-    print("Version	: v1.0")
+    print("Version	: v1.1")
     print("Collaborators : kerdes, xdevcod3")
     print("--------------------------------")
 
@@ -429,7 +468,7 @@ def menu_actions():
             clear_screen()
             logo()
             banner2()
-            print(f"Current Option\n└─({menu[0]}")
+            print(f"Current Option\n└─({menu[0]}\n")
             try:
                 create_database()
             except Exception as e:
@@ -438,7 +477,7 @@ def menu_actions():
             clear_screen()
             logo()
             banner2()
-            print(f"Current Option\n└─({menu[1]}")
+            print(f"Current Option\n└─({menu[1]}\n")
             try:
                 use_existing_db()
             except Exception as e:
@@ -447,7 +486,7 @@ def menu_actions():
             clear_screen()
             logo()
             banner2()
-            print(f"Current Option\n└─({menu[2]}")
+            print(f"Current Option\n└─({menu[2]}\n")
             try:
                 store_password()
             except Exception as e:
@@ -456,7 +495,7 @@ def menu_actions():
             clear_screen()
             logo()
             banner2()
-            print(f"Current Option\n└─({menu[3]}")
+            print(f"Current Option\n└─({menu[3]}\n")
             try:
                 retrieve_password()
             except Exception as e:
@@ -465,7 +504,16 @@ def menu_actions():
             clear_screen()
             logo()
             banner2()
-            print(f"Current Option\n└─({menu[4]}")
+            print(f"Current Option\n└─({menu[4]}\n")
+            try:
+                delete_entry_by_title()
+            except Exception as e:
+                print("\033[1;31mError deleting entry:", str(e), "\033[0m")
+        elif menu_option_selected == "6":
+            clear_screen()
+            logo()
+            banner2()
+            print(f"Current Option\n└─({menu[5]}\n")
             try:
                 analyze_password()
             except Exception as e:
@@ -474,11 +522,11 @@ def menu_actions():
                     str(e),
                     "\033[0m",
                 )
-        elif menu_option_selected == "6":
+        elif menu_option_selected == "7":
             clear_screen()
             logo()
             banner2()
-            print(f"Current Option\n└─({menu[5]}")
+            print(f"Current Option\n└─({menu[6]}\n")
             try:
                 show_entries()
             except Exception as e:
@@ -497,6 +545,7 @@ def main():
     banner2()
     banner3()
     get_user_choice()
+    
 # =============== END update ==============
 
 if __name__ == "__main__":
