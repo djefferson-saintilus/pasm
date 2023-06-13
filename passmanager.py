@@ -93,7 +93,7 @@ def create_database():
             settings_file.write(f"{DB_FILE}\n{master_password}")
 
         MASTER_PASSWORD = master_password
-        time.sleep(2)
+        input("\nPress ENTER to continue")
     except Exception as e:
         print("\033[1;31mError creating database:", str(e), "\033[0m")
         input("\nPress ENTER to continue")
@@ -247,7 +247,7 @@ def retrieve_password():
                 print("\033[1;32mRetrieved password:", decrypted_password, "\033[0m")
                 pyperclip.copy(decrypted_password)
                 print("\033[1;32mPassword copied to clipboard.\033[0m")
-                time.sleep(2)
+                input("\nPress ENTER to continue")
             else:
                 print("\033[1;31mNo matching entry found.\033[0m")
                 input("\nPress ENTER to continue")
