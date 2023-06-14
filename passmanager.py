@@ -316,7 +316,6 @@ def analyze_password():
                     print(
                         f"The password '\033[1;33m{password}\033[0m' has been found in \033[1;31m{count}\033[0m data breaches."
                     )
-                    input("\nPress ENTER to continue")
                     found = True
                     break
 
