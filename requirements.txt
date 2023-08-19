@@ -1,0 +1,9 @@
+cryptography==38.0.4
+cryptography.egg==info
+Pillow==10.0.0
+Pillow==10.0.0
+pykeepass==4.0.4
+pyperclip==1.8.2
+Requests==2.31.0
+tabulate==0.8.9
+validators==0.20.0
