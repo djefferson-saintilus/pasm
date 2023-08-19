@@ -28,11 +28,12 @@ Key features of the Password Manager Security Analyzer include:
 
 # How-to-use
 
-To use the Password Manager Security Analyzer, simply create a new KeePass database or use an existing one. You can 
-store your passwords, retrieve them based on entry names or website URLs, analyze password security, and view all your stored entries in a convenient table format.
+To use the Password Manager Security Analyzer, simply create a new KeePass database
+or use an existing one. You can store your passwords, retrieve them based on entry
+names or website URLs, analyze password security, and view all your stored entries
+in a convenient table format.
 
-The project is open-source and available on GitHub, so you can explore the code, contribute enhancements, or customize it 
-to suit your needs.
+The project is open-source and available on GitHub, so you can explore the code, contribute enhancements, or customize it to suit your needs.
 
-Give it a try and take control of your passwords with confidence! Let's prioritize online security together. 💪🔒💻
+Give it a try and take control of your passwords with confidence! Let's prioritize online security together, and remember to keep your master password safe and never share it with anyone. With PASM, you can effectively manage and protect your passwords, enhancing your online security.💪🔒💻
 
