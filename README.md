@@ -11,14 +11,21 @@ In an increasingly digital world, keeping our online accounts secure is of param
 I've developed a Python-based Password Manager Security Analyzer to help you manage and safeguard your passwords effectively.
 
 Key features of the Password Manager Security Analyzer include:
+Certainly, let's add icons to the key features of your Password Manager Security Analyzer:
 
-- 🔐 Secure Password Storage: Safely store and manage your passwords in an encrypted KeePass database.
+- **Secure Password Storage (🔐):** Safely store and manage your passwords in an encrypted KeePass database.
 
-- 🌐 Website Integration: Associate website URLs with your stored passwords for easy retrieval.
+- **Website Integration (🌐):** Associate website URLs with your stored passwords for easy retrieval.
 
-- 🔍 Password Analysis: Check if your passwords have been compromised in data breaches using the Have I Been Pwned API.
+- **Password Analysis (🔍):** Check if your passwords have been compromised in data breaches using the Have I Been Pwned API.
 
-- 📋 Password Sharing: Easily share passwords with others without revealing the actual password.
+- **Password Sharing (📋):** Easily share passwords with others without revealing the actual password.
+
+- **Password Generator (🔑):** Generate strong and random passwords with customizable settings.
+
+- **Two-Factor Authentication (2FA) Integration (📱):** Support for adding and managing 2FA codes for your accounts.
+
+These icons can help make your key features stand out and provide a visual representation of each functionality in your Password Manager Security Analyzer.
 
 # How-to-use
 
