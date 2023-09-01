@@ -285,7 +285,7 @@ font-size:16px;
              <enum>QFrame::Sunken</enum>
             </property>
             <property name="currentIndex">
-             <number>0</number>
+             <number>3</number>
             </property>
             <widget class="QWidget" name="page_welcome">
              <layout class="QHBoxLayout" name="horizontalLayout_11">
@@ -559,6 +559,13 @@ padding: 50px;
                   <widget class="QPushButton" name="btn_delete_fields_3">
                    <property name="text">
                     <string>Delete fields</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="btn_random_pass">
+                   <property name="text">
+                    <string>Random Password</string>
                    </property>
                   </widget>
                  </item>

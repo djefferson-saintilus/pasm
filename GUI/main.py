@@ -7,13 +7,15 @@ from PySide6.QtWidgets import (
     QTableWidgetItem,
 )
 from PySide6.QtGui import QFont
+from PySide6.QtCore import Qt
 import pykeepass, hashlib, requests, base64, os, pyperclip, string, random,validators
-
+from PySide6 import QtCore, QtGui
 from cryptography.fernet import Fernet
 import sys, os
 from principal_ui import Ui_MainWindow
+from gen_pass import PasswordGenerator
 
-
+carac = "abcdefghijklmnopqrstuvwxyz"
 # Constant variable for the global scope
 DB_FILE = ""
 MASTER_PASSWORD = ""
@@ -42,6 +44,7 @@ class MainWindow(QMainWindow):
         self.ui.btn_store_password.clicked.connect(self.store_password)
         self.ui.btn_retrieve.clicked.connect(self.retrieve_password)
         self.ui.btn_delete.clicked.connect(self.show_entries)
+        self.ui.btn_random_pass.clicked.connect(self.random_pass)
         self.ui.btn_analyse.clicked.connect(self.analyze_password)
         self.ui.btn_logout.clicked.connect(self.logout)
 
@@ -215,6 +218,11 @@ class MainWindow(QMainWindow):
         self.ui.btn_confirm_3.clicked.connect(self.confirm_store_password)
         self.ui.btn_delete_fields_3.clicked.connect(self.delete_store_entries)
 
+    def random_pass(self):
+        self.win_random = PasswordGenerator()
+        self.win_random.setWindowModality(Qt.ApplicationModal)
+        self.win_random.show()
+        
     def confirm_store_password(self):
         global DB_FILE
         global MASTER_PASSWORD
@@ -479,11 +487,10 @@ class MainWindow(QMainWindow):
     # =====================================================================================
 
     # logout function
-    def logout(self):
+    def logout(self):        
         print("Application is logout...")
 
     # execcute the program
-
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

@@ -13,6 +13,7 @@ from PySide6.QtWidgets import (QAbstractItemView, QApplication, QFormLayout, QFr
     QWidget)
 import ressources_rc
 
+
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
@@ -388,6 +389,11 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_6.addWidget(self.btn_delete_fields_3)
 
+        self.btn_random_pass = QPushButton(self.frame_6)
+        self.btn_random_pass.setObjectName(u"btn_random_pass")
+
+        self.horizontalLayout_6.addWidget(self.btn_random_pass)
+
         self.btn_confirm_3 = QPushButton(self.frame_6)
         self.btn_confirm_3.setObjectName(u"btn_confirm_3")
 
@@ -574,7 +580,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(3)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -618,6 +624,7 @@ class Ui_MainWindow(object):
         self.lbl_pass_url.setText(QCoreApplication.translate("MainWindow", u"Password for (URL)", None))
         self.lbl_username.setText(QCoreApplication.translate("MainWindow", u"Username", None))
         self.btn_delete_fields_3.setText(QCoreApplication.translate("MainWindow", u"Delete fields", None))
+        self.btn_random_pass.setText(QCoreApplication.translate("MainWindow", u"Random Password", None))
         self.btn_confirm_3.setText(QCoreApplication.translate("MainWindow", u"Confirm", None))
         self.lbl_retriev_username.setText(QCoreApplication.translate("MainWindow", u"Username", None))
         self.lbl_retrieve_name.setText(QCoreApplication.translate("MainWindow", u"Entry name", None))
@@ -634,3 +641,4 @@ class Ui_MainWindow(object):
         self.btn_confirm_5.setText(QCoreApplication.translate("MainWindow", u"Confirm", None))
         self.lbl_ss_logo.setText("")
     # retranslateUi
+
