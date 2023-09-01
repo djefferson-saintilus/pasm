@@ -1,3 +1,4 @@
+
 from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
     QMetaObject, QObject, QPoint, QRect,
     QSize, QTime, QUrl, Qt)
@@ -11,7 +12,6 @@ from PySide6.QtWidgets import (QAbstractItemView, QApplication, QFormLayout, QFr
     QStackedWidget, QTableWidget, QTableWidgetItem, QVBoxLayout,
     QWidget)
 import ressources_rc
-# import ressourse_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -51,19 +51,21 @@ class Ui_MainWindow(object):
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.horizontalLayout = QHBoxLayout(self.centralwidget)
+        self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.frame_left = QFrame(self.centralwidget)
         self.frame_left.setObjectName(u"frame_left")
         self.frame_left.setMinimumSize(QSize(250, 0))
         self.frame_left.setMaximumSize(QSize(250, 16777215))
-        self.frame_left.setFrameShape(QFrame.StyledPanel)
+        self.frame_left.setFrameShape(QFrame.NoFrame)
         self.frame_left.setFrameShadow(QFrame.Raised)
         self.verticalLayout = QVBoxLayout(self.frame_left)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.frame_11 = QFrame(self.frame_left)
         self.frame_11.setObjectName(u"frame_11")
         self.frame_11.setStyleSheet(u"")
-        self.frame_11.setFrameShape(QFrame.StyledPanel)
+        self.frame_11.setFrameShape(QFrame.NoFrame)
         self.frame_11.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_9 = QHBoxLayout(self.frame_11)
         self.horizontalLayout_9.setSpacing(0)
@@ -81,11 +83,11 @@ class Ui_MainWindow(object):
 
         self.frame_buttons = QFrame(self.frame_left)
         self.frame_buttons.setObjectName(u"frame_buttons")
-        self.frame_buttons.setFrameShape(QFrame.StyledPanel)
+        self.frame_buttons.setFrameShape(QFrame.NoFrame)
         self.frame_buttons.setFrameShadow(QFrame.Raised)
         self.formLayout = QFormLayout(self.frame_buttons)
         self.formLayout.setObjectName(u"formLayout")
-        self.formLayout.setHorizontalSpacing(9)
+        self.formLayout.setHorizontalSpacing(0)
         self.formLayout.setContentsMargins(0, 0, 0, 0)
         self.btn_create = QPushButton(self.frame_buttons)
         self.btn_create.setObjectName(u"btn_create")
@@ -130,14 +132,14 @@ class Ui_MainWindow(object):
 
         self.frame_right = QFrame(self.centralwidget)
         self.frame_right.setObjectName(u"frame_right")
-        self.frame_right.setFrameShape(QFrame.StyledPanel)
+        self.frame_right.setFrameShape(QFrame.NoFrame)
         self.frame_right.setFrameShadow(QFrame.Raised)
         self.verticalLayout_2 = QVBoxLayout(self.frame_right)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.frame_title = QFrame(self.frame_right)
         self.frame_title.setObjectName(u"frame_title")
         self.frame_title.setStyleSheet(u"")
-        self.frame_title.setFrameShape(QFrame.StyledPanel)
+        self.frame_title.setFrameShape(QFrame.NoFrame)
         self.frame_title.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_2 = QHBoxLayout(self.frame_title)
         self.horizontalLayout_2.setSpacing(0)
@@ -163,7 +165,7 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.frame_stacks.sizePolicy().hasHeightForWidth())
         self.frame_stacks.setSizePolicy(sizePolicy)
         self.frame_stacks.setStyleSheet(u"")
-        self.frame_stacks.setFrameShape(QFrame.StyledPanel)
+        self.frame_stacks.setFrameShape(QFrame.NoFrame)
         self.frame_stacks.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_3 = QHBoxLayout(self.frame_stacks)
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
@@ -179,7 +181,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_11.setContentsMargins(0, 0, 0, 0)
         self.frame_12 = QFrame(self.page_welcome)
         self.frame_12.setObjectName(u"frame_12")
-        self.frame_12.setFrameShape(QFrame.StyledPanel)
+        self.frame_12.setFrameShape(QFrame.NoFrame)
         self.frame_12.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_12 = QHBoxLayout(self.frame_12)
         self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
@@ -201,7 +203,7 @@ class Ui_MainWindow(object):
         self.frame.setStyleSheet(u"#frame{\n"
 "padding: 50px;\n"
 "}")
-        self.frame.setFrameShape(QFrame.StyledPanel)
+        self.frame.setFrameShape(QFrame.NoFrame)
         self.frame.setFrameShadow(QFrame.Raised)
         self.formLayout_2 = QFormLayout(self.frame)
         self.formLayout_2.setObjectName(u"formLayout_2")
@@ -240,7 +242,7 @@ class Ui_MainWindow(object):
 
         self.frame_2 = QFrame(self.page_create_db)
         self.frame_2.setObjectName(u"frame_2")
-        self.frame_2.setFrameShape(QFrame.StyledPanel)
+        self.frame_2.setFrameShape(QFrame.NoFrame)
         self.frame_2.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_4 = QHBoxLayout(self.frame_2)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
@@ -267,7 +269,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.frame_3 = QFrame(self.page_exist_db)
         self.frame_3.setObjectName(u"frame_3")
-        self.frame_3.setFrameShape(QFrame.StyledPanel)
+        self.frame_3.setFrameShape(QFrame.NoFrame)
         self.frame_3.setFrameShadow(QFrame.Raised)
         self.gridLayout_2 = QGridLayout(self.frame_3)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
@@ -301,7 +303,7 @@ class Ui_MainWindow(object):
 
         self.frame_4 = QFrame(self.page_exist_db)
         self.frame_4.setObjectName(u"frame_4")
-        self.frame_4.setFrameShape(QFrame.StyledPanel)
+        self.frame_4.setFrameShape(QFrame.NoFrame)
         self.frame_4.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_5 = QHBoxLayout(self.frame_4)
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
@@ -328,7 +330,7 @@ class Ui_MainWindow(object):
         self.frame_5.setStyleSheet(u"#frame_5{\n"
 "padding: 50px;\n"
 "}")
-        self.frame_5.setFrameShape(QFrame.StyledPanel)
+        self.frame_5.setFrameShape(QFrame.NoFrame)
         self.frame_5.setFrameShadow(QFrame.Raised)
         self.formLayout_4 = QFormLayout(self.frame_5)
         self.formLayout_4.setObjectName(u"formLayout_4")
@@ -377,7 +379,7 @@ class Ui_MainWindow(object):
 
         self.frame_6 = QFrame(self.page_storepassword)
         self.frame_6.setObjectName(u"frame_6")
-        self.frame_6.setFrameShape(QFrame.StyledPanel)
+        self.frame_6.setFrameShape(QFrame.NoFrame)
         self.frame_6.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_6 = QHBoxLayout(self.frame_6)
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
@@ -405,7 +407,7 @@ class Ui_MainWindow(object):
         self.frame_7.setStyleSheet(u"#frame_7{\n"
 "padding: 50px;\n"
 "}")
-        self.frame_7.setFrameShape(QFrame.StyledPanel)
+        self.frame_7.setFrameShape(QFrame.NoFrame)
         self.frame_7.setFrameShadow(QFrame.Raised)
         self.gridLayout = QGridLayout(self.frame_7)
         self.gridLayout.setObjectName(u"gridLayout")
@@ -434,7 +436,7 @@ class Ui_MainWindow(object):
 
         self.frame_8 = QFrame(self.page_retrieve)
         self.frame_8.setObjectName(u"frame_8")
-        self.frame_8.setFrameShape(QFrame.StyledPanel)
+        self.frame_8.setFrameShape(QFrame.NoFrame)
         self.frame_8.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_7 = QHBoxLayout(self.frame_8)
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
@@ -494,7 +496,7 @@ class Ui_MainWindow(object):
         self.frame_9.setStyleSheet(u"#frame_9{\n"
 "padding: 50px;\n"
 "}")
-        self.frame_9.setFrameShape(QFrame.StyledPanel)
+        self.frame_9.setFrameShape(QFrame.NoFrame)
         self.frame_9.setFrameShadow(QFrame.Raised)
         self.formLayout_6 = QFormLayout(self.frame_9)
         self.formLayout_6.setObjectName(u"formLayout_6")
@@ -514,7 +516,7 @@ class Ui_MainWindow(object):
         self.frame_10 = QFrame(self.page_analyse)
         self.frame_10.setObjectName(u"frame_10")
         self.frame_10.setStyleSheet(u"")
-        self.frame_10.setFrameShape(QFrame.StyledPanel)
+        self.frame_10.setFrameShape(QFrame.NoFrame)
         self.frame_10.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_8 = QHBoxLayout(self.frame_10)
         self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
@@ -548,7 +550,7 @@ class Ui_MainWindow(object):
         self.frame_right_buttom.setMinimumSize(QSize(0, 50))
         self.frame_right_buttom.setMaximumSize(QSize(16777215, 50))
         self.frame_right_buttom.setStyleSheet(u"")
-        self.frame_right_buttom.setFrameShape(QFrame.StyledPanel)
+        self.frame_right_buttom.setFrameShape(QFrame.NoFrame)
         self.frame_right_buttom.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_10 = QHBoxLayout(self.frame_right_buttom)
         self.horizontalLayout_10.setSpacing(0)
@@ -572,7 +574,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(6)
+        self.stackedWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -632,4 +634,3 @@ class Ui_MainWindow(object):
         self.btn_confirm_5.setText(QCoreApplication.translate("MainWindow", u"Confirm", None))
         self.lbl_ss_logo.setText("")
     # retranslateUi
-
