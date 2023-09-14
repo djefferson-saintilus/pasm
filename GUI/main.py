@@ -214,6 +214,7 @@ class MainWindow(QMainWindow):
         self.ui.lbl_welcome.setText("Store Password")
         self.ui.stackedWidget.setCurrentIndex(3)
         self.ui.entry_typepassword.setFocus()
+        self.ui.entry_typepassword.setEchoMode(QLineEdit.Password)
         
         self.ui.btn_confirm_3.clicked.connect(self.confirm_store_password)
         self.ui.btn_delete_fields_3.clicked.connect(self.delete_store_entries)
@@ -226,6 +227,11 @@ class MainWindow(QMainWindow):
     def confirm_store_password(self):
         global DB_FILE
         global MASTER_PASSWORD
+        
+        password = self.ui.entry_typepassword.text()
+        e_name = self.ui.entry_name.text()
+        website_url = self.ui.entry_pass_url.text()
+        username = self.ui.entry_username.text()
 
         if DB_FILE == "" or MASTER_PASSWORD == "":
             QMessageBox.warning(self, "Warning",
@@ -235,11 +241,6 @@ class MainWindow(QMainWindow):
             return
         
         while True:
-            password = self.ui.entry_typepassword.text()
-            e_name = self.ui.entry_name.text()
-            website_url = self.ui.entry_pass_url.text()
-            username = self.ui.entry_username.text()
-
             if not validators.url(website_url):
                 QMessageBox.warning(self, "Warning","Invalid website URL.")
                 self.ui.entry_pass_url.setFocus()
@@ -266,6 +267,16 @@ class MainWindow(QMainWindow):
                 return
             else:
                 break
+            
+        while True:
+            if self.ui.entry_typepassword.text() == "":
+                QMessageBox.warning(self, "Warning",
+                    "Password field should not be empty"
+                )
+                self.ui.entry_typepassword.setFocus()
+                return
+            else:
+                break
 
         try:
             with pykeepass.PyKeePass(DB_FILE, password=MASTER_PASSWORD) as kp:
@@ -278,7 +289,6 @@ class MainWindow(QMainWindow):
                     )
                     self.ui.entry_name.setFocus()
                     return
-
                 entry = kp.add_entry(
                     entry_group, title=e_name, username=username, password=password
                 )
@@ -340,6 +350,7 @@ class MainWindow(QMainWindow):
                         f"Retrieved password: {decrypted_password}\nPassword copied to clipboard.",
                     )
                     pyperclip.copy(decrypted_password)
+                    self.delete_retreive_entries()
                 else:
                     QMessageBox.warning(self, "Warning", "No matching entry found")
         except Exception as e:
