@@ -20,11 +20,6 @@ carac = "abcdefghijklmnopqrstuvwxyz"
 DB_FILE = ""
 MASTER_PASSWORD = ""
 
-# Create the database directory if not exist
-db_dir = r"./db/"
-if not os.path.exists(db_dir):
-    os.mkdir(r"./db/")
-
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -36,7 +31,7 @@ class MainWindow(QMainWindow):
         self.setFixedSize(1024, 580)
 
         self.ui.stackedWidget.setCurrentIndex(0)
-
+        self.create_db_folder()
         # Signals when clicking buttons
 
         self.ui.btn_create.clicked.connect(self.create_database)
@@ -52,7 +47,12 @@ class MainWindow(QMainWindow):
     # =====================================================================================
 
     # Native function from the command line version
-
+    def create_db_folder(self):
+        # Create the database directory if not exist
+        db_dir = r"./db/"
+        if not os.path.exists(db_dir):
+            os.mkdir(r"./db/")
+        
     def encrypt_password(password):
         key = hashlib.sha256(MASTER_PASSWORD.encode()).digest()
         fernet_key = base64.urlsafe_b64encode(key)
@@ -92,7 +92,7 @@ class MainWindow(QMainWindow):
     def confirm_create_db(self):
         global DB_FILE
         global MASTER_PASSWORD
-
+        self.create_db_folder()
         database_name = self.ui.entry_db_name.text()
         current_directory = os.getcwd()  # Get current directory
 
@@ -110,6 +110,14 @@ class MainWindow(QMainWindow):
         master_password = self.ui.entry_masterpass.text()
         confirm_password = self.ui.entry_masterpass_conf.text()
 
+        # Provide a name for the database you want to create 
+        if database_name == "":
+            QMessageBox.warning(
+                self, "Warning", f"The database name can not be empty\nplease type a name !"
+            )
+            self.ui.entry_db_name.setFocus()
+            return
+        
         if master_password != confirm_password:
             QMessageBox.warning(
                 self, "Warning", f"Passwords do not match. Database creation aborted."
@@ -199,7 +207,7 @@ class MainWindow(QMainWindow):
 
     def browse_db(self):
         directory = QFileDialog.getOpenFileName()[0]
-        self.ui.entry_select_db.setText(directory)
+        self.ui.entry_select_db.setText(f"../" + os.path.basename(directory))
         self.ui.entry_masterpassword.setFocus()
 
     def delete_entries_2(self):
@@ -227,11 +235,6 @@ class MainWindow(QMainWindow):
     def confirm_store_password(self):
         global DB_FILE
         global MASTER_PASSWORD
-        
-        password = self.ui.entry_typepassword.text()
-        e_name = self.ui.entry_name.text()
-        website_url = self.ui.entry_pass_url.text()
-        username = self.ui.entry_username.text()
 
         if DB_FILE == "" or MASTER_PASSWORD == "":
             QMessageBox.warning(self, "Warning",
@@ -241,14 +244,18 @@ class MainWindow(QMainWindow):
             return
         
         while True:
-            if not validators.url(website_url):
-                QMessageBox.warning(self, "Warning","Invalid website URL.")
-                self.ui.entry_pass_url.setFocus()
+            password = self.ui.entry_typepassword.text()
+            if password == "":
+                QMessageBox.warning(self, "Warning",
+                    "Password field should not be empty"
+                )
+                self.ui.entry_typepassword.setFocus()
                 return
             else:
                 break
             
         while True:
+            e_name = self.ui.entry_name.text()
             if e_name == "":
                 QMessageBox.warning(self, "Warning",
                     "Entry name should not be empty"
@@ -259,21 +266,21 @@ class MainWindow(QMainWindow):
                 break
             
         while True:
-            if len(username) < 4:
-                QMessageBox.warning(self, "Warning",
-                    "Username should be a minimum of 4 characters long."
-                )
-                self.ui.entry_username.setFocus()
+            website_url = self.ui.entry_pass_url.text()
+            if not validators.url(website_url):
+                QMessageBox.warning(self, "Warning","Invalid website URL.")
+                self.ui.entry_pass_url.setFocus()
                 return
             else:
                 break
             
         while True:
-            if self.ui.entry_typepassword.text() == "":
+            username = self.ui.entry_username.text()
+            if len(username) < 4:
                 QMessageBox.warning(self, "Warning",
-                    "Password field should not be empty"
+                    "Username should be a minimum of 4 characters long."
                 )
-                self.ui.entry_typepassword.setFocus()
+                self.ui.entry_username.setFocus()
                 return
             else:
                 break
@@ -347,7 +354,7 @@ class MainWindow(QMainWindow):
                     QMessageBox.information(
                         self,
                         "Information",
-                        f"Retrieved password: {decrypted_password}\nPassword copied to clipboard.",
+                        f"Retrieved password: <font color='red'>{decrypted_password}</font>\nPassword copied to clipboard.",
                     )
                     pyperclip.copy(decrypted_password)
                     self.delete_retreive_entries()
