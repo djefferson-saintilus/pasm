@@ -84,4 +84,13 @@ a bon
 sa a bon li byen afiche yo.
 
 
-## 
+## entry not found
+
+apre mwen fin retwouve yon modpas, li dim not found
+
+## clipboard dont work
+
+lem fin jwenn yon modpas, li dim li kopye nan clipboard la
+sevre li kopye men, pouw kolel nan chan analyse password la
+program lan pa reponn, li kole la yon ti tan apresa li pa kole
+anyen, se komsi ou paka itilize clipboard la.
